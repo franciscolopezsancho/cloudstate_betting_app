@@ -1,0 +1,15 @@
+{
+  "name": "betting-house",
+  "version": "0.1.0",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "cloudstate": "^0.0.1",
+    "mocha": "^7.1.1",
+    "ts-protoc-gen": "^0.12.0"
+  },
+  "scripts": {
+    "prestart": "compile-descriptor bettinghouse.proto",
+    "start": "node index.js",
+    "test": "mocha"
+  }
+}

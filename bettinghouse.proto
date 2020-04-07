@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+import "cloudstate/entitykey.proto";
+
+package org.example.bettinghouse;
+
+service BettingHouseService {
+    rpc AddCashIn(AddLineCashIn) returns (google.protobuf.Empty);
+    rpc RemoveItem(RemoveLineItem) returns (google.protobuf.Empty);
+    rpc RetrieveBet(GetBet) returns (Bet);
+}
+
+message AddLineCashIn {
+    string user_id = 1 [(.cloudstate.entity_key) = true];
+    string game_id = 2;
+    string expected_result = 3;
+    int32 money = 4;
+}
+
+message RemoveLineItem {
+    string user_id = 1 [(.cloudstate.entity_key) = true];
+    string product_id = 2;
+}
+
+message GetBet {//this was GetShoppingCart
+    string user_id = 1 [(.cloudstate.entity_key) = true];
+}
+
+message CashIn {
+    string game_id = 1;
+    string expected_result = 2;
+    int32 money = 3;
+}
+
+message Bet {//this was Cart
+    repeated CashIn items = 1;
+}

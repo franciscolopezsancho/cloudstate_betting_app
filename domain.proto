@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package org.example.bettinghouse.domain;
+
+message LineCashIn {
+    string gameId = 1;
+    string expectedResult = 2;
+    int32 money = 3;
+}
+
+message CashInAdded {
+    LineCashIn item = 1;
+}
+
+message ItemRemoved {
+    string productId = 1;
+}
+
+message CloseBet {}
+
+message Bet {
+    repeated LineCashIn items = 1;
+    bool open = 2;
+}
